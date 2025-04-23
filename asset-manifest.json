@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/marauder-serial-terminal/static/css/main.88fb19c4.css",
+    "main.js": "/marauder-serial-terminal/static/js/main.55a6bc00.js",
+    "index.html": "/marauder-serial-terminal/index.html",
+    "main.88fb19c4.css.map": "/marauder-serial-terminal/static/css/main.88fb19c4.css.map",
+    "main.55a6bc00.js.map": "/marauder-serial-terminal/static/js/main.55a6bc00.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88fb19c4.css",
+    "static/js/main.55a6bc00.js"
+  ]
+}
