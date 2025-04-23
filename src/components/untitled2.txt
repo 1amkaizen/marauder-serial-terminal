@@ -1,0 +1,120 @@
+import React from 'react';
+import { Typography } from '@mui/material';
+
+export const attacks = {
+    deauth: {
+        name: "Deauth",
+        description: (
+            <div>
+                <Typography variant="h6">Deauthentication Flood</Typography>
+                <Typography>
+                    Serangan ini akan mengirimkan frame deauthentication ke semua klien yang terhubung ke access point target. Langkah-langkah:
+                    <ul>
+                        <li>Bangun daftar access point dengan <code>scanap</code>.</li>
+                        <li>Tampilkan daftar AP dengan <code>list -a</code>.</li>
+                        <li>Pilih AP yang akan diserang dengan <code>select -a 0,1</code>.</li>
+                        <li>Jalankan serangan dengan <code>attack -t deauth</code>.</li>
+                    </ul>
+                </Typography>
+
+                <Typography variant="h6">Targeted Deauthentication Attack</Typography>
+                <Typography>
+                    Serangan ini menargetkan stasiun tertentu yang terhubung ke access point yang dipilih. Langkah-langkah:
+                    <ul>
+                        <li>Bangun daftar AP dengan <code>scanap</code>.</li>
+                        <li>Pilih AP dengan <code>select -a 0,1</code>.</li>
+                        <li>Bangun daftar stasiun dengan <code>scansta</code>.</li>
+                        <li>Pilih stasiun dengan <code>select -c 0,12</code>.</li>
+                        <li>Jalankan serangan dengan <code>attack -t deauth -c</code>.</li>
+                    </ul>
+                </Typography>
+
+                <Typography variant="h6">Manual Deauthentication Attack</Typography>
+                <Typography>
+                    Serangan ini memungkinkan Anda untuk mengatur alamat sumber dan tujuan frame deauthentication secara manual. Langkah-langkah:
+                    <ul>
+                        <li>Jalankan serangan dengan <code>attack -t deauth -s &lt;source&gt; -d &lt;destination&gt;</code>.</li>
+                    </ul>
+                </Typography>
+            </div>
+        ),
+        command: "attack -t deauth"
+    },
+    evilPortal: {
+        name: "Evil Portal",
+        description: (
+            <div>
+                <Typography variant="h6" gutterBottom>
+                    Persiapkan HTML Anda
+                </Typography>
+                <Typography variant="body1">
+                    1. Pilih file HTML dari halaman ini.<br />
+                    2. Ganti nama file tersebut menjadi <code>index.html</code>.<br />
+                    3. Tempatkan file di root kartu SD ESP32 Anda.
+                    <br /><br />
+                    <strong>ATAU</strong>
+                    <br /><br />
+                    4. Tempatkan semua file HTML dari halaman ini di root kartu SD Anda.<br />
+                    5. Gunakan perintah <code>evilportal -c sethtml &lt;html.html&gt;</code> untuk memilih file HTML yang Anda dapatkan.
+                    <br /><br />
+                    <strong>ATAU</strong>
+                    <br /><br />
+                    6. Tempatkan semua file HTML dari halaman ini di root kartu SD Anda.<br />
+                    7. Gunakan &quot;Select EP HTML File&quot; untuk memilih salah satu file HTML yang Anda dapatkan.
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                    Persiapkan Konfigurasi AP Anda
+                </Typography>
+                <Typography variant="body1">
+                    Pilih salah satu opsi berikut untuk melanjutkan. Prioritas pemilihan nama AP default dari Marauder adalah sebagai berikut:
+                    <ul>
+                        <li>Daftar SSID</li>
+                        <li>Daftar AP yang dipilih</li>
+                        <li><code>/ap.config.txt</code> dari kartu SD</li>
+                    </ul>
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                    Menggunakan Daftar SSID
+                </Typography>
+                <Typography variant="body1">
+                    1. Gunakan perintah <code>ssid -a -n FreeWiFi</code> untuk menambahkan satu SSID ke daftar SSID Anda.<br />
+                    2. Periksa daftar SSID Anda dengan <code>list -s</code>.<br />
+                    3. Jalankan perintah <code>evilportal -c start</code> untuk memulai serangan.
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                    Menggunakan Daftar Access Point
+                </Typography>
+                <Typography variant="body1">
+                    1. Pindai access point yang ada di area Anda menggunakan <code>scanap</code>.<br />
+                    2. Hentikan pemindaian dengan <code>stopscan</code>.<br />
+                    3. Daftarkan access point yang telah dipindai menggunakan <code>list -a</code>.<br />
+                    4. Pilih access point dengan <code>select -a &lt;index&gt;</code>.<br />
+                    5. Daftarkan kembali dengan <code>list -a</code> untuk memastikan status &quot;selected&quot;.<br />
+                    6. Jalankan <code>evilportal -c start</code> untuk memulai serangan.
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                    Menggunakan File Konfigurasi
+                </Typography>
+                <Typography variant="body1">
+                    1. Buat file bernama <code>ap.config.txt</code>.<br />
+                    2. Tempatkan nama access point yang diinginkan dalam file tersebut.<br />
+                    3. Masukkan kembali kartu SD ke slot kartu SD ESP32.<br />
+                    4. Jalankan perintah <code>evilportal -c start</code> untuk memulai serangan.
+                </Typography>
+
+                <Typography variant="h6" gutterBottom>
+                    Catatan Penting
+                </Typography>
+                <Typography variant="body1">
+                    Mulai dari firmware Marauder v0.11.0, serangan ini memerlukan kartu SD yang terpasang langsung ke ESP32 Anda. Hal ini mungkin berubah di versi berikutnya, tetapi untuk saat ini Anda diwajibkan mengikuti petunjuk ini untuk memastikan Anda memiliki kemampuan tersebut.
+                </Typography>
+            </div>
+        ),
+        command: "attack -t evilportal"
+    },
+
+};
